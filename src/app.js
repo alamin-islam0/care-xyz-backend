@@ -15,6 +15,20 @@ app.use(
 );
 app.use(express.json());
 
+// Root route
+app.get("/", (_req, res) => {
+  res.status(200).json({ 
+    message: "Welcome to Care.xyz API",
+    version: "1.0.0",
+    endpoints: {
+      health: "/api/health",
+      auth: "/api/auth",
+      services: "/api/services",
+      bookings: "/api/bookings"
+    }
+  });
+});
+
 app.get("/api/health", (_req, res) => {
   res.status(200).json({ message: "Care.xyz API is running" });
 });
